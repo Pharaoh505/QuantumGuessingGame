@@ -1,5 +1,7 @@
 A simple python code to simulate superpositions when measured
 
+Try it out: [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://quantumguessinggame-djfhzkhuo8ewgb4rexc8wx.streamlit.app/)
+
 How to play:
 
 The game will randomly prepare a qubit in three possible states: |0>, |1>, or superposition.
