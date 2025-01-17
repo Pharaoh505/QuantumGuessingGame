@@ -16,4 +16,5 @@ If its superposition, it has a 50% chance of being measured as |1> or |0>.
 
 Code explanation
 measure_qubit(state): This function simulates the measurement of a qubit. It uses random probabilities to simulate the measurement outcome.
+
 quantum_game(): This is the main game function. It runs the game loop, asks for user input, and displays the result based on the measurement outcome.
