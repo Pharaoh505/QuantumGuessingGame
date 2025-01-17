@@ -1,9 +1,9 @@
 A simple python code to simulate superpositions when measured
 
 How to play:
-The game will randomly prepare a qubit in three possible states: |0> |1> or superposition
+The game will randomly prepare a qubit in three possible states: |0>, |1>, or superposition.
 
-You will be asked to guess the state of the qubit after measurement. Your guess can be either |0> or |1>
+You will be asked to guess the state of the qubit after measurement. Your guess can be either |0> or |1>.
 
 After the qubit is measured. The outcome depends on the inital state:
 
