@@ -13,6 +13,8 @@ if "attempts" not in st.session_state:
     st.session_state.attempts = 0
 if "history" not in st.session_state:
     st.session_state.history = []
+if "auto_results" not in st.session_state:
+    st.session_state.auto_results = {}
 
 guess = st.radio("Guess the qubit state will collapse to:", ['0', '1'])
 
@@ -43,7 +45,13 @@ if st.button("Measure Qubit"):
 
     st.session_state.state = random.choice(['|0⟩', '|1⟩', 'superposition'])
 
-st.subheader("Auto Simulation")
+if st.button("Reset Game"):
+    st.session_state.state = random.choice(['|0⟩', '|1⟩', 'superposition'])
+    st.session_state.score = 0
+    st.session_state.attempts = 0
+    st.session_state.history = []
+    st.session_state.auto_results = {}
+    st.success("Game has been reset!")
 
 def auto_simulate(n):
     correct = 0
@@ -54,19 +62,24 @@ def auto_simulate(n):
             correct += 1
     return correct
 
+st.subheader("Auto Simulation")
 col1, col2, col3 = st.columns(3)
-with col1:
-    if st.button("Run 10 Times"):
-        correct = auto_simulate(10)
-        st.info(f"✅ {correct}/10 correct → {correct * 10}% chance")
-with col2:
-    if st.button("Run 50 Times"):
-        correct = auto_simulate(50)
-        st.info(f"✅ {correct}/50 correct → {correct * 2}% chance")
-with col3:
-    if st.button("Run 100 Times"):
-        correct = auto_simulate(100)
-        st.info(f"✅ {correct}/100 correct → {correct}% chance")
+
+if col1.button("Run 10 Times"):
+    correct = auto_simulate(10)
+    st.session_state.auto_results[10] = correct
+if col2.button("Run 50 Times"):
+    correct = auto_simulate(50)
+    st.session_state.auto_results[50] = correct
+if col3.button("Run 100 Times"):
+    correct = auto_simulate(100)
+    st.session_state.auto_results[100] = correct
+
+for n in [10, 50, 100]:
+    if n in st.session_state.auto_results:
+        correct = st.session_state.auto_results[n]
+        probability = round((correct / n) * 100, 2)
+        st.info(f"✅ {correct}/{n} correct → {probability}% chance")
 
 if st.session_state.history:
     st.subheader("Your Guessing Performance")
