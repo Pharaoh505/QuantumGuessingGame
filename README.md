@@ -1,3 +1,11 @@
+Update: 
+- Added Auto Simulate
+- Added a chart
+- Added a counter
+- Added a reset button
+
+
+
 A simple python code to simulate superpositions when measured
 
 Try it out: [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://quantumguessinggame-djfhzkhuo8ewgb4rexc8wx.streamlit.app/)
